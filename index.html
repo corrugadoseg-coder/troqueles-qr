@@ -8,7 +8,7 @@
 <style>
   :root{
     --bg:#f4f1ee; --card:#ffffff; --ink:#2b2320; --muted:#8a7f77; --line:#e6ded7;
-    --accent:#e05a55; --accent-ink:#ffffff; --brand-tan:#b0886a;
+    --accent:#e05a55; --brand-tan:#b0886a;
     --warn-bg:#fdecea; --warn-ink:#c04a44; --warn-line:#f3c0ba;
   }
   :root:not([data-theme="light"]){
@@ -60,12 +60,6 @@
     padding:12px 14px;font-weight:700;font-size:15px;
   }
   .warn .ic{font-size:20px;line-height:1}
-  .btn{
-    display:block;text-decoration:none;text-align:center;margin-top:24px;
-    background:var(--accent);color:var(--accent-ink);
-    font-weight:800;font-size:17px;padding:16px;border-radius:14px;
-  }
-  .btn .sub{display:block;font-weight:600;font-size:12px;opacity:.9;margin-top:2px}
   .foot{color:var(--muted);font-size:12px;margin-top:20px;text-align:center}
   .demo{
     margin-top:12px;font-size:12px;color:var(--muted);
@@ -93,28 +87,18 @@
       <span class="ic">⚠️</span>
       <span>Lleva impresión — tiene fotopolímero</span>
     </div>
-
-    <a class="btn" id="btnFicha" href="#">
-      Ver ficha completa
-      <span class="sub">Solo oficina (requiere iniciar sesión)</span>
-    </a>
   </div>
 
   <div class="foot">EG Corrugados · Control de Troqueles</div>
   <div class="demo hidden" id="demo">Vista de ejemplo (sin datos en el link). Al escanear un QR real, se completa con ese troquel.</div>
 
 <script>
-  var APP_BASE = "https://apps.powerapps.com/play/e/default-f943f6a4-62dd-4a9b-ba93-c2640a30c7cf/a/6a6f49ba-d446-44b9-ba4f-221d19f46146?tenantId=f943f6a4-62dd-4a9b-ba93-c2640a30c7cf&hint=77103da8-cd03-40b0-b659-49c6d1c6e4bf";
   function getParam(n){ try{ return new URLSearchParams(window.location.search).get(n);}catch(e){return null;} }
-  var cli=getParam("cli"), cod=getParam("cod"), imp=getParam("imp"), id=getParam("id");
-  var esEjemplo=(!cli && !cod);
-  if(esEjemplo){ cli="ACME S.A."; cod="1161"; imp="1"; id="57"; document.getElementById("demo").classList.remove("hidden"); }
+  var cli=getParam("cli"), cod=getParam("cod"), imp=getParam("imp");
+  if(!cli && !cod){ cli="ACME S.A."; cod="1161"; imp="1"; document.getElementById("demo").classList.remove("hidden"); }
   document.getElementById("cli").textContent=cli||"—";
   document.getElementById("cod").textContent=cod||"—";
   if(imp==="1"||imp==="si"||imp==="Si"||imp==="true"){ document.getElementById("warn").classList.remove("hidden"); }
-  var link=APP_BASE;
-  if(id){ link += (APP_BASE.indexOf("?")>=0?"&":"?") + "troquelid=" + encodeURIComponent(id); }
-  document.getElementById("btnFicha").setAttribute("href", link);
 </script>
 </body>
 </html>
