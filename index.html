@@ -104,7 +104,7 @@
   <div class="demo hidden" id="demo">Vista de ejemplo (sin datos en el link). Al escanear un QR real, se completa con ese troquel.</div>
 
 <script>
-  var APP_BASE = "APP_URL_AQUI";
+  var APP_BASE = "https://apps.powerapps.com/play/e/default-f943f6a4-62dd-4a9b-ba93-c2640a30c7cf/a/6a6f49ba-d446-44b9-ba4f-221d19f46146?tenantId=f943f6a4-62dd-4a9b-ba93-c2640a30c7cf&hint=77103da8-cd03-40b0-b659-49c6d1c6e4bf";
   function getParam(n){ try{ return new URLSearchParams(window.location.search).get(n);}catch(e){return null;} }
   var cli=getParam("cli"), cod=getParam("cod"), imp=getParam("imp"), id=getParam("id");
   var esEjemplo=(!cli && !cod);
